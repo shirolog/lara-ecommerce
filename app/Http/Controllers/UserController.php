@@ -11,7 +11,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function redirect()
     {
         $usertype = Auth::user()->usertype;
 
@@ -19,7 +19,20 @@ class UserController extends Controller
 
             return view('admin.home');
         }else{
-            return view('dashboard');
+            return view('user.home');
+        }
+    }
+
+
+    public function index()
+    {
+        if(Auth::id())
+        {
+            return redirect('ecommerce');
+        }
+        else
+        {
+            return view('user.home');
         }
     }
 

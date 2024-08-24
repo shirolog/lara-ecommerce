@@ -15,9 +15,6 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware([
     'auth:sanctum',
@@ -29,5 +26,10 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/ecommerce', [UserController::class, 'index'])
+Route::get('/ecommerce', [UserController::class, 'redirect'])
+->name('redirect');
+
+
+Route::get('/', [UserController::class, 'index'])
 ->name('index');
+
