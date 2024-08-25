@@ -35,8 +35,6 @@ Route::get('/ecommerce', [UserController::class, 'redirect'])
 Route::get('/', [UserController::class, 'index'])
 ->name('index');
 
-Route::get('/', [UserController::class, 'index'])
-->name('index');
 
 Route::get('/product', [AdminController::class, 'index'])
 ->name('admin.index');

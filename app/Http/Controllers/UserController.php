@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,8 @@ class UserController extends Controller
 
             return view('admin.home');
         }else{
-            return view('user.home');
+            $products = Product::paginate(3);
+            return view('user.home', compact('products'));
         }
     }
 
@@ -31,8 +33,9 @@ class UserController extends Controller
             return redirect('ecommerce');
         }
         else
-        {
-            return view('user.home');
+        {   
+            $products = Product::paginate(3);
+            return view('user.home', compact('products'));
         }
     }
 
