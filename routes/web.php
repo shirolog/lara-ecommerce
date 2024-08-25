@@ -39,8 +39,15 @@ Route::get('/', [UserController::class, 'index'])
 Route::get('/product', [AdminController::class, 'index'])
 ->name('admin.index');
 
+
 Route::post('/upload', [ProductController::class, 'store'])
 ->name('produt.store');
+
+Route::delete('/showproduct/{product}', [ProductController::class, 'destroy'])
+->name('produt.destroy');
+
+Route::get('/showproduct', [AdminController::class, 'show'])
+->name('admin.show');
 
 
 
