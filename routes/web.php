@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -39,6 +40,9 @@ Route::get('/', [UserController::class, 'index'])
 
 Route::get('/product', [AdminController::class, 'index'])
 ->name('admin.index');
+
+Route::post('/upload', [ProductController::class, 'store'])
+->name('produt.store');
 
 
 
