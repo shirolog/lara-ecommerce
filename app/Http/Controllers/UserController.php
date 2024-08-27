@@ -12,31 +12,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function redirect()
-    {
-        $usertype = Auth::user()->usertype;
 
-        if($usertype == '1'){
-
-            return view('admin.home');
-        }else{
-            $products = Product::paginate(3);
-            return view('user.home', compact('products'));
-        }
-    }
 
 
     public function index()
     {
-        if(Auth::id())
-        {
-            return redirect('ecommerce');
-        }
-        else
-        {   
-            $products = Product::paginate(3);
-            return view('user.home', compact('products'));
-        }
+
     }
 
     /**

@@ -28,15 +28,15 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/ecommerce', [UserController::class, 'redirect'])
+Route::get('/ecommerce', [ProductController::class, 'redirect'])
 ->name('redirect');
 
 
-Route::get('/', [UserController::class, 'index'])
+Route::get('/', [ProductController::class, 'index'])
 ->name('index');
 
 
-Route::get('/product', [AdminController::class, 'index'])
+Route::get('/product', [ProductController::class, 'index'])
 ->name('admin.index');
 
 
@@ -46,8 +46,17 @@ Route::post('/upload', [ProductController::class, 'store'])
 Route::delete('/showproduct/{product}', [ProductController::class, 'destroy'])
 ->name('produt.destroy');
 
-Route::get('/showproduct', [AdminController::class, 'show'])
+
+
+Route::get('/updateview/{product}', [ProductController::class, 'edit'])
+->name('product.edit');
+
+Route::put('/updateview/{product}', [ProductController::class, 'update'])
+->name('product.update');
+
+Route::get('/showproduct', [ProductController::class, 'show'])
 ->name('admin.show');
+
 
 
 

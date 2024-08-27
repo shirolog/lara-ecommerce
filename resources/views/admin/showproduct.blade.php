@@ -44,7 +44,7 @@
                             <th>{{$product->quantity}}</th>
                             <th>${{$product->price}}</th>
                             <th><img src="{{Storage::url($product->image)}}" height="100px" width="100px"></th>
-                            <th><a href="" class="btn btn-primary">Update</a></th>
+                            <th><a href="{{route('product.edit', $product->id)}}" class="btn btn-primary">Update</a></th>
                             <form action="{{route('produt.destroy', $product->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
