@@ -50,12 +50,14 @@ Route::delete('/showproduct/{product}', [ProductController::class, 'destroy'])
 
 Route::get('/updateview/{product}', [ProductController::class, 'edit'])
 ->name('product.edit');
-
 Route::put('/updateview/{product}', [ProductController::class, 'update'])
 ->name('product.update');
 
 Route::get('/showproduct', [ProductController::class, 'show'])
 ->name('admin.show');
+
+Route::get('/search', [ProductController::class, 'search'])
+->name('product.search');
 
 
 

@@ -158,4 +158,24 @@ class ProductController extends Controller
 
         return redirect()->back()->with('message', 'Product Deleted!');
     }
+
+
+    public function search(Request $request){
+
+        $request->validate([
+
+            'search' => 'required',
+        ]);
+
+        $search = $request->input('search');
+
+        if($search == ''){
+            $products = Product::paginate(3);
+            return view('user.home', compact('products'));
+        }
+
+        $products = Product::Where('title', 'like', "%{$search}%")->get();
+
+        return view('user.home', compact('products'));
+    }
 }

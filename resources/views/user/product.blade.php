@@ -6,6 +6,12 @@
             <div class="section-heading">
               <h2>Latest Products</h2>
               <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
+
+              <form action="{{route('product.search')}}" method="get" class="form-inline" style="float:right; padding: 10px;">
+                @csrf
+                <input type="search" name="search" class="form-control" placeholder="seacrch">
+                <input type="submit" value="Search" class="btn btn-success">
+              </form>
             </div>
           </div>
 
@@ -17,15 +23,18 @@
                   <a href="#"><h4>{{$product->title}}</h4></a>
                   <h6>${{$product->price}}</h6>
                   <p>{{$product->description}}</p>
+
+                  <a href="#" class="btn btn-primary">Add Cart</a>
                 </div>
               </div>
             </div>
           @endforeach
 
-          <div class="d-flex justify-content-center">
-            {!! $products->links() !!}
-          </div>
-
+          @if(method_exists($products, 'links'))
+            <div class="d-flex justify-content-center">
+              {!! $products->links() !!}
+            </div>
+          @endif
         </div>
       </div>
     </div>

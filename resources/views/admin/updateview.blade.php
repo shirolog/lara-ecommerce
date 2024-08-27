@@ -26,7 +26,7 @@
     <div class="container-fluid page-body-wrapper">
 
         <div class="container" align= "center">
-            <h1 class="title">Add product</h1>
+            <h1 class="title">Update product</h1>
 
             @if($message = Session::get('message'))
 
