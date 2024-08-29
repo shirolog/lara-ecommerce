@@ -62,8 +62,11 @@ class CartController extends Controller
      * Display the specified resource.
      */
     public function show(Cart $cart)
-    {
-        //
+    {   
+        $user = Auth::user();
+        $cart = Cart::where('phone', $user->phone)->get();
+        $count = Cart::where('phone', $user->phone)->count();
+        return view('user.showcart', compact('cart', 'count'));
     }
 
     /**

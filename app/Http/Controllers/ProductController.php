@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +21,11 @@ class ProductController extends Controller
  
              return view('admin.home');
          }else{
-             $products = Product::paginate(3);
-             return view('user.home', compact('products'));
+
+            $products = Product::paginate(3);
+            $user = Auth::user();
+            $count = Cart::where('phone', $user->phone)->count();
+             return view('user.home', compact('products', 'count'));
          }
      }
 
