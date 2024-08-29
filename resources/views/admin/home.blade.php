@@ -12,5 +12,5 @@
     @include('admin.body')
     <!-- partial -->
 
-        @include('admin.script')
+    @include('admin.script')
 </html>

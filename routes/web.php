@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 
 
@@ -58,6 +59,10 @@ Route::get('/showproduct', [ProductController::class, 'show'])
 
 Route::get('/search', [ProductController::class, 'search'])
 ->name('product.search');
+
+Route::post('/addcart/{product}', [CartController::class, 'store'])
+->name('product.store');
+
 
 
 

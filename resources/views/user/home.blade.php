@@ -26,6 +26,32 @@ https://templatemo.com/tm-546-sixteen-clothing
     <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
     <link rel="stylesheet" href="assets/css/owl.css">
 
+    <style>
+        
+      .btn-close {
+        box-sizing: content-box;
+        width: 1em;
+        height: 1em;
+        padding: 0.25em 0.25em;
+        color: #000;
+        background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+        border: 0;
+        border-radius: 0.25rem;
+        opacity: 0.5; }
+        .btn-close:hover {
+          color: #000;
+          text-decoration: none;
+          opacity: 0.75; }
+        .btn-close:focus {
+          outline: 0;
+          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+          opacity: 1; }
+        .btn-close:disabled, .btn-close.disabled {
+          pointer-events: none;
+          user-select: none;
+          opacity: 0.25; }
+    </style>
+
   </head>
 
   <body>
@@ -48,7 +74,7 @@ https://templatemo.com/tm-546-sixteen-clothing
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="" id="navbarResponsive">
+          <div class="" id="navbarResponsive" >
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
                 <a class="nav-link" href="index.html">Home
@@ -85,6 +111,15 @@ https://templatemo.com/tm-546-sixteen-clothing
           </div>
         </div>
       </nav>
+      @if($message = Session::get('message'))
+
+        <div class="alert alert-success" style="padding: 15px; width:100%; border-radius: 5px">
+            {{$message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+            style="float: right;"></button>
+        </div>
+
+      @endif
     </header>
 
     <!-- Page Content -->
@@ -194,9 +229,11 @@ https://templatemo.com/tm-546-sixteen-clothing
     <script src="assets/js/slick.js"></script>
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
+    <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
 
 
-    <script language = "text/Javascript"> 
+
+    <!-- <script language = "text/Javascript"> 
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
       function clearField(t){                   //declaring the array outside of the
       if(! cleared[t.id]){                      // function makes it static and global
@@ -205,7 +242,7 @@ https://templatemo.com/tm-546-sixteen-clothing
           t.style.color='#fff';
           }
       }
-    </script>
+    </script> -->
 
 
   </body>

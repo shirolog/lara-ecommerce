@@ -24,7 +24,11 @@
                   <h6>${{$product->price}}</h6>
                   <p>{{$product->description}}</p>
 
-                  <a href="#" class="btn btn-primary">Add Cart</a>
+                  <form action="{{route('product.store', $product->id)}}" method="post">
+                    @csrf
+                    <input type="number" name="quantity" class="form-control mb-4" value="1" min="1" style="width: 100px;">
+                    <input type="submit" class="btn btn-primary" value="Add Cart">
+                  </form>
                 </div>
               </div>
             </div>
