@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\Cart;
 
@@ -72,6 +73,10 @@ Route::get('/showcart', [CartController::class, 'show'])
 
 Route::delete('/showcart/{cart}', [CartController::class, 'destroy'])
 ->name('cart.destroy');
+
+
+Route::post('/order', [OrderController::class, 'store'])
+->name('order.store');
 
 
 

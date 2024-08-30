@@ -125,35 +125,48 @@ https://templatemo.com/tm-546-sixteen-clothing
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
             style="float: right;"></button>
         </div>
-
       @endif
     </header>
     
-    <div style="padding: 100px;" align="center">
+    <div style="padding: 100px;" align="center" class="mt-2">
         <table>
+            <tr style="background: black;">
+                <th style="padding: 10px; font-size:20px; color:white;">Product Name</th>
+                <th style="padding: 10px; font-size:20px; color:white;">Quantity</th>
+                <th style="padding: 10px; font-size:20px; color:white;">Price</th>
+                <th style="padding: 10px; font-size:20px; color:white;">Action</th>
+            </tr>
+            @foreach($cart as $cartItem)
                 <tr style="background: black;">
-                    <th style="padding: 10px; font-size:20px; color:white;">Product Name</th>
-                    <th style="padding: 10px; font-size:20px; color:white;">Quantity</th>
-                    <th style="padding: 10px; font-size:20px; color:white;">Price</th>
-                    <th style="padding: 10px; font-size:20px; color:white;">Action</th>
-                </tr>
-            @foreach($cart as $cart)
-                <tr style="background: black;">
-                    <td style="padding: 10px; color:white;">{{$cart->product_title}}</td>
-                    <td style="padding: 10px; color:white;">{{$cart->quantity}}</td>
-                    <td style="padding: 10px; color:white;">${{$cart->price}}</td>
                     <td style="padding: 10px; color:white;">
-                      <form action="{{route('cart.destroy', $cart->id)}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger" 
-                         onclick="return confirm('delete this product?');">Delete</button>
-                      </form>
-                  </td>
-                    
+                        {{$cartItem->product_title}}
+                    </td>
+                    <td style="padding: 10px; color:white;">
+                        {{$cartItem->quantity}}
+                    </td>
+                    <td style="padding: 10px; color:white;">
+                        ${{$cartItem->price}}
+                    </td>
+                    <td style="padding: 10px; color:white;">
+                        <form action="{{route('cart.destroy', $cartItem->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this product?');">Delete</button>
+                        </form>
+                    </td>                
                 </tr>
+      
             @endforeach    
         </table>
+        <form action="{{route('order.store')}}" method="post">
+            @csrf
+            @foreach($cart as $cartItem)
+                <input type="hidden" name="product_name[]" value="{{$cartItem->product_title}}">
+                <input type="hidden" name="quantity[]" value="{{$cartItem->quantity}}">
+                <input type="hidden" name="price[]" value="{{$cartItem->price}}">
+            @endforeach
+            <button type="submit" class="btn btn-success mt-2">Confirm Order</button>
+        </form>
     </div>
 
 
