@@ -70,6 +70,9 @@ Route::post('/addcart/{product}', [CartController::class, 'store'])
 Route::get('/showcart', [CartController::class, 'show'])
 ->name('cart.show');
 
+Route::delete('/showcart/{cart}', [CartController::class, 'destroy'])
+->name('cart.destroy');
+
 
 
 

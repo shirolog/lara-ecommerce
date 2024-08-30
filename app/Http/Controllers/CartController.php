@@ -90,6 +90,8 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        //
+        $cart->delete();
+
+        return redirect()->back()->with('message', 'Product Removed Successfully!');
     }
 }

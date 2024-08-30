@@ -135,12 +135,22 @@ https://templatemo.com/tm-546-sixteen-clothing
                     <th style="padding: 10px; font-size:20px; color:white;">Product Name</th>
                     <th style="padding: 10px; font-size:20px; color:white;">Quantity</th>
                     <th style="padding: 10px; font-size:20px; color:white;">Price</th>
+                    <th style="padding: 10px; font-size:20px; color:white;">Action</th>
                 </tr>
-            @foreach($cart as $carts)
+            @foreach($cart as $cart)
                 <tr style="background: black;">
-                    <td style="padding: 10px; color:white;">{{$carts->product_title}}</td>
-                    <td style="padding: 10px; color:white;">{{$carts->quantity}}</td>
-                    <td style="padding: 10px; color:white;">${{$carts->price}}</td>
+                    <td style="padding: 10px; color:white;">{{$cart->product_title}}</td>
+                    <td style="padding: 10px; color:white;">{{$cart->quantity}}</td>
+                    <td style="padding: 10px; color:white;">${{$cart->price}}</td>
+                    <td style="padding: 10px; color:white;">
+                      <form action="{{route('cart.destroy', $cart->id)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" 
+                         onclick="return confirm('delete this product?');">Delete</button>
+                      </form>
+                  </td>
+                    
                 </tr>
             @endforeach    
         </table>
