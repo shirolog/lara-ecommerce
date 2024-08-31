@@ -78,6 +78,12 @@ Route::delete('/showcart/{cart}', [CartController::class, 'destroy'])
 Route::post('/order', [OrderController::class, 'store'])
 ->name('order.store');
 
+Route::get('/showorder', [OrderController::class, 'show'])
+->name('order.show');
+
+Route::put('/showorder/{order}', [OrderController::class, 'update'])
+->name('order.update');
+
 
 
 

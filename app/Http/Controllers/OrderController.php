@@ -65,8 +65,12 @@ class OrderController extends Controller
      * Display the specified resource.
      */
     public function show(Order $order)
-    {
-        //
+    {   
+        if(Auth::user()->usertype == 1){
+
+            $orders = Order::all();
+            return view('admin.showorder', compact('orders'));
+        }
     }
 
     /**
@@ -81,8 +85,15 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Order $order)
-    {
-        //
+    {   
+        $request->validate([
+            'status' => 'required|in:not delivered,delivered',
+        ]);
+
+        $order->status = $request->status;
+        $order->save();
+
+        return redirect()->back();
     }
 
     /**

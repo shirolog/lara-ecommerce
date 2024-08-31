@@ -165,8 +165,11 @@ https://templatemo.com/tm-546-sixteen-clothing
                 <input type="hidden" name="quantity[]" value="{{$cartItem->quantity}}">
                 <input type="hidden" name="price[]" value="{{$cartItem->price}}">
             @endforeach
-            <button type="submit" class="btn btn-success mt-2">Confirm Order</button>
-        </form>
+    
+            <button type="submit" class="btn btn-success mt-2"
+              @if(count($cart) < 1) disabled @endif>Confirm Order
+            </button>        
+      </form>
     </div>
 
 
