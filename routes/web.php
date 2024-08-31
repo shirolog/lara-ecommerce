@@ -39,7 +39,7 @@ Route::get('/', [ProductController::class, 'index'])
 
 
 Route::get('/product', [ProductController::class, 'index'])
-->name('admin.index');
+->name('product.index');
 
 
 Route::post('/upload', [ProductController::class, 'store'])

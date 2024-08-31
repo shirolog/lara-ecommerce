@@ -32,18 +32,17 @@ class ProductController extends Controller
 
      public function index()
      {
-         if (Auth::check()) {
+         if (Auth::check()){
              $user = Auth::user();
              
              if ($user->usertype == 1) {
                 return view('admin.product');
+             }else{
+
+                return redirect()->back();
              }
-             
-            return redirect('ecommerce');
-         } 
-         else{
-            $products = Product::paginate(3);
-            return view('user.home', compact('products'));
+         }else{
+            return redirect('login');
          }
      }
      
